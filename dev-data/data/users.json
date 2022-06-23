@@ -1,0 +1,10 @@
+[
+  {
+    "_id": "0",
+    "name": "Tu Nguyen",
+    "role": "admin",
+    "active": true,
+    "password": "123456"
+  }
+  
+]

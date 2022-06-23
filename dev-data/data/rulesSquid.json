@@ -1,0 +1,30 @@
+[  
+  {
+    "rules" : [
+      {
+        "key": "acl",
+        "name": "blockWeb",
+        "type": "dtdomain",
+        "value": "fap.fpt.edu.vn"
+      },
+      {
+        "key": "acl",
+        "name": "blockFileExtension",
+        "type": "urlpath_regex",
+        "value": "/etc/squid/123.txt"
+      }
+    ],
+    "access": [
+      {
+        "key": "http_access",
+        "status": "deny",
+        "name": "blockWeb"
+      },
+      {
+        "key": "http_access",
+        "status": "deny",
+        "name": "blockFileExtension"
+      }
+    ]
+  }
+]  

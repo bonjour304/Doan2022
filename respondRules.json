@@ -1,0 +1,46 @@
+[
+    {
+        "_id": "6295f9441a4c681fa8bdcbb0",
+        "rKey": "acl",
+        "rName": "blockWeb0",
+        "rType": "dstdomain",
+        "rValue": "fap.fpt.edu.vn",
+        "aKey": "http_access",
+        "aType": "deny",
+        "aName": "blockWeb0",
+        "__v": 0
+    },
+    {
+        "_id": "6295f9441a4c681fa8bdcbb1",
+        "rKey": "acl",
+        "rName": "blockWeb1",
+        "rType": "dstdomain",
+        "rValue": "24h.com.vn",
+        "aKey": "http_access",
+        "aType": "allow",
+        "aName": "blockWeb1",
+        "__v": 0
+    },
+    {
+        "_id": "6295f9441a4c681fa8bdcbb3",
+        "rKey": "acl",
+        "rName": "blockWeb3",
+        "rType": "dstdomain",
+        "rValue": "animet.net",
+        "aKey": "http_access",
+        "aType": "allow",
+        "aName": "blockWeb3",
+        "__v": 0
+    },
+    {
+        "_id": "6295f9441a4c681fa8bdcbb2",
+        "rKey": "acl",
+        "rName": "blockWeb2",
+        "rType": "dstdomain",
+        "rValue": "vuighe.net",
+        "aKey": "http_access",
+        "aType": "deny",
+        "aName": "blockWeb2",
+        "__v": 0
+    }
+]
