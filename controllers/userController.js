@@ -12,20 +12,6 @@ const filterObj = (obj, ...allowedFields) => {
     return newObj;
 };
 
-
-exports.getAllUsers = catchAsync(async (req, res, next) => {
-    const users = await User.find();
-
-    // SEND RESPONSE
-    res.status(200).json({
-        status: 'success',
-        results: users.length,
-        data: {
-            users
-        }
-    });
-});
-
 exports.getMe = (req, res, next) => {
     req.params.id = req.user.id;
     next();
@@ -73,7 +59,15 @@ exports.getAllUsers = factory.getAll(User);
 
 // Do NOT update passwords with this!
 exports.updateUser = factory.updateOne(User);
-exports.deleteUser = factory.deleteOne(User);
+
+exports.deleteUser = catchAsync(async (req, res, next) => {
+	await User.findByIdAndUpdate(req.params.id, { active: false });
+
+	res.status(204).json({
+		status: 'success',
+		data: null
+	});
+});
 
 exports.createUser = catchAsync(async (req, res, next) => {
     const document = await User.create(req.body);

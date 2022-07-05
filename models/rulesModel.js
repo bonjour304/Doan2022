@@ -6,63 +6,45 @@ const ruleSchema = new mongoose.Schema(
   {
     rKey : {
       type: String,
-      required: [true, 'A rule must have a key'],
-      enum: {
-        values: ['acl'],
-        message: 'Key must be "acl"'
-      }
+      required: true,
+      enum: ['acl'],
+      default: 'acl'
     },
 
     rName : {
       type: String,
-      required: [true, 'A rule must have a name'],
-      
+      required: true,
     },
 
     rType : {
       type : String,
-      required: [true, 'A rule must have a key'],
-      enum: {
-        values :['dstdomain', 'src', 'url_path'],
-        message: 'Type must be "dstdomain", "src", "url_path"'
-      }
+      required: true,
+      enum: ['dstdomain', 'src', 'url_path'],
+      default: 'dstdomain'
     },
 
     rValue : {
       type: String,
-      required: [true, 'A rule must have a name'],
+      required: true,
       unique: true
     },
 
     aKey : {
       type: String,
-      required: [true, 'A access must have a key'],
-      enum: {
-        values: ['http_access'],
-        message: 'Key must be "http_access"'
-      }
+      required: true,
+      enum: ['http_access'],
+      default: 'http_access'
     },
 
       aType : {
         type : String,
-        required: [true, 'A rule must have a key'],
-        enum: {
-          values :['deny', 'allow'],
-          message: 'Type must be "deny"or"allow'
-        }
+        required: true,
+        enum: ['deny', 'allow']
       },
-    
 
     aName : {
       type: String,
-      required: [true, 'A access must have a name'],
-      validate: {
-        // This only works on CREATE and SAVE!!!
-        validator: function(el) {
-          return el === this.rName;
-        },
-        message: 'Rule name and access name are not the same!'
-      }
+      required: true
     }
    }
 );

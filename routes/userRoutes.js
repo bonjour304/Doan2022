@@ -12,12 +12,6 @@ router.use(authController.protect);
 router
     .route('/signup')
     .post(authController.restrictTo('admin'), authController.signup);
-
-router.patch(
-    '/updateMyPassword',
-    authController.restrictTo('admin', 'developer'),
-    authController.updatePassword
-);
 //Get ME route, using getMe() to attach the ID for getUser()
 router
     .route('/me')
@@ -35,5 +29,13 @@ router
     .get(userController.getUser)
     .patch(authController.restrictTo('admin'), userController.updateUser)
     .delete(authController.restrictTo('admin'), userController.deleteUser);
+
+router
+    .route('/:id/updateMyPassword')
+    .patch(
+        authController.restrictTo('admin', 'developer'),
+        authController.updatePassword
+    );
+
 
 module.exports = router;

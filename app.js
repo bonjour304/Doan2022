@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
-
+const cookieParser = require('cookie-parser');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const userRouter = require('./routes/userRoutes');
@@ -21,6 +21,8 @@ app.use(helmet());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+app.use(cookieParser());
 
 // Limit requests from same API
 const limiter = rateLimit({
@@ -65,9 +67,8 @@ app.use((req, res, next) => {
 });
 
 // 3) ROUTES
-app.use('/apisquid/rules', rulesRouter);
-app.use('/apisquid/users', userRouter);
-
+app.use('/apisquid/rule', rulesRouter);
+app.use('/apisquid/user', userRouter);
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
